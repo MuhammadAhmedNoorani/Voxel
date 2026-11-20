@@ -409,6 +409,12 @@
       line-height: 0;
     }
 
+    .hero-section picture {
+      display: block;
+      width: 100%;
+      line-height: 0;
+    }
+
     .hero-banner-img {
       width: 100%;
       height: auto;
@@ -1647,17 +1653,33 @@
       .table-scroll-hint {
         display: block;
       }
+      .hero-section {
+        background: #ECECEC;
+        min-height: auto;
+      }
       .hero-banner-img {
-        min-height: 240px;
-        max-height: 60vh;
+        width: 100%;
+        height: auto;
+        min-height: unset;
+        max-height: none;
+        object-fit: contain;
+        object-position: center top;
+        display: block;
       }
       .product-grid {
         grid-template-columns: 1fr;
         gap: 2.5rem;
       }
-      .arch-grid, .features-grid {
+      .arch-grid {
         grid-template-columns: 1fr;
         gap: 1.5rem;
+      }
+      .features-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.25rem;
+      }
+      .feature-item {
+        padding: 1.5rem 1.15rem;
       }
       .modes-display-box {
         padding: 1.8rem 1.4rem;
@@ -1729,6 +1751,29 @@
       .action-icon-btn {
         width: 36px;
         height: 36px;
+      }
+      .hero-banner-img {
+        width: 100%;
+        height: auto;
+        min-height: unset;
+        max-height: none;
+        object-fit: contain;
+        object-position: center top;
+      }
+      .features-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.75rem;
+      }
+      .feature-item {
+        padding: 1.2rem 0.85rem;
+      }
+      .feature-title {
+        font-size: 0.92rem;
+        margin-bottom: 0.35rem;
+      }
+      .feature-desc {
+        font-size: 0.78rem;
+        line-height: 1.4;
       }
       .section-title {
         font-size: 1.85rem;
@@ -1872,14 +1917,18 @@
   </header>
 
   <main>
-    <!-- 2. HERO SECTION — CLEAN BANNER VISIBLE WITHOUT TEXT/OVERLAY -->
+    <!-- 2. HERO SECTION — CLEAN BANNER VISIBLE WITHOUT TEXT/OVERLAY (MOBILE + DESKTOP ADAPTIVE) -->
     <section class="hero-section" id="hero">
-      <img 
-        src="assets/hero-banner.webp" 
-        alt="VOXEL Pure Sound Wireless Earbuds"
-        class="hero-banner-img"
-        onerror="this.src='assets/Voxel Pure Sound Wireless Earbuds banner for herosection.webp'"
-      >
+      <picture>
+        <source media="(max-width: 768px)" srcset="assets/hero-banner-mobile.webp">
+        <source media="(min-width: 769px)" srcset="assets/hero-banner.webp">
+        <img 
+          src="assets/hero-banner.webp" 
+          alt="VOXEL Pure Sound Wireless Earbuds"
+          class="hero-banner-img"
+          onerror="if(window.innerWidth <= 768){ this.src='images/hero-banner-mobile.webp'; } else { this.src='assets/hero-banner.jpg'; }"
+        >
+      </picture>
     </section>
 
     <!-- 3. FEATURED PRODUCTS (NO OUTER BOX & IMAGE COVERS FULL SPACE) -->
